@@ -165,7 +165,7 @@ body {
 
 .header {
     position: fixed;
-    top: 61px; /* Account for demo and status banners */
+    top: 81px; /* Account for demo and status banners */
     left: 0;
     right: 0;
     z-index: 900;
@@ -285,7 +285,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    padding-top: 120px; /* Account for fixed header */
+    padding-top: 140px; /* Account for fixed header */
     overflow: hidden;
 }
 
@@ -330,7 +330,7 @@ body {
 
 .carousel-controls {
     position: absolute;
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%);
     z-index: 3;
     width: 100%;
@@ -662,10 +662,10 @@ section {
     
     .nav-menu {
         position: fixed;
-        top: 61px; /* Account for banners */
+        top: 81px; /* Account for both banners */
         left: -100%;
         width: 100%;
-        height: calc(100vh - 61px);
+        height: calc(100vh - 81px);
         background: rgba(0, 0, 0, 0.98);
         flex-direction: column;
         justify-content: center;
@@ -733,10 +733,76 @@ section {
     
     .ornate-frame {
         padding: 30px 15px;
+        margin: 0 10px;
     }
     
     .frame-corner {
         width: 30px;
         height: 30px;
+    }
+    
+    .carousel-controls {
+        padding: 0 15px;
+        top: 35%;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 320px) {
+    body {
+        min-width: 320px;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+    
+    .logo-text {
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+    }
+    
+    .logo-subtitle {
+        font-size: 0.7rem;
+    }
+    
+    .ornate-frame {
+        padding: 20px 10px;
+        margin: 0 5px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+    
+    .carousel-controls {
+        padding: 0 10px;
+        top: 30%;
+    }
+    
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .back-to-top {
+        width: 100px;
+        height: 50px;
+        bottom: 20px;
+        right: 10px;
+        font-size: 0.75rem;
     }
 }
