@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         updateStatusDisplay(status, now);
         updateBackToTopButton(status);
+        updatePhoneAnimation(status);
     }
 
     // Determine current business status
@@ -203,6 +204,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     backToTopBtn.classList.add('closed');
                     backToTopStatus.textContent = 'CLOSED';
                 }
+            }
+        }
+    }
+
+    // Update phone icon animation based on business status
+    function updatePhoneAnimation(status) {
+        const phoneContact = document.getElementById('phone-contact');
+        
+        if (phoneContact) {
+            // Remove all status classes
+            phoneContact.classList.remove('store-open', 'store-closed');
+            
+            if (status.isOpen) {
+                phoneContact.classList.add('store-open');
+            } else {
+                phoneContact.classList.add('store-closed');
             }
         }
     }

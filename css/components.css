@@ -729,6 +729,87 @@
     color: var(--primary-gold);
     margin-top: 5px;
     flex-shrink: 0;
+    transition: var(--hover-transition);
+}
+
+.contact-item.phone i.fa-phone {
+    animation: phoneStatic 3s ease-in-out infinite;
+}
+
+.contact-item.phone.store-open i.fa-phone {
+    animation: phoneRing 1.5s ease-in-out infinite;
+}
+
+.contact-item.phone.store-closed i.fa-phone {
+    animation: phoneSleep 4s ease-in-out infinite;
+}
+
+@keyframes phoneRing {
+    0%, 100% {
+        transform: rotate(0deg) scale(1);
+        color: var(--primary-gold);
+        filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.6));
+    }
+    10% {
+        transform: rotate(-15deg) scale(1.1);
+        color: #00ff00;
+        filter: drop-shadow(0 0 15px rgba(0, 255, 0, 0.8));
+    }
+    20% {
+        transform: rotate(15deg) scale(1.1);
+        color: var(--rich-gold);
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
+    }
+    30% {
+        transform: rotate(-10deg) scale(1.05);
+        color: #00ff00;
+        filter: drop-shadow(0 0 12px rgba(0, 255, 0, 0.6));
+    }
+    40% {
+        transform: rotate(10deg) scale(1.05);
+        color: var(--primary-gold);
+        filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.8));
+    }
+}
+
+@keyframes phoneSleep {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        color: #666;
+        filter: drop-shadow(0 0 3px rgba(102, 102, 102, 0.5));
+        opacity: 0.7;
+    }
+    25% {
+        transform: scale(0.95) translateY(2px);
+        color: #888;
+        filter: drop-shadow(0 0 5px rgba(136, 136, 136, 0.4));
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(0.9) translateY(3px);
+        color: #555;
+        filter: drop-shadow(0 0 2px rgba(85, 85, 85, 0.6));
+        opacity: 0.6;
+    }
+    75% {
+        transform: scale(0.95) translateY(1px);
+        color: #777;
+        filter: drop-shadow(0 0 4px rgba(119, 119, 119, 0.3));
+        opacity: 0.5;
+    }
+}
+
+@keyframes phoneStatic {
+    0%, 100% {
+        transform: scale(1);
+        color: var(--primary-gold);
+        filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+    }
+    50% {
+        transform: scale(1.02);
+        color: var(--rich-gold);
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+    }
 }
 
 .contact-item h3 {
