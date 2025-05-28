@@ -943,6 +943,8 @@
     text-align: center;
     padding: 8px;
     line-height: 1.2;
+    max-width: calc(100vw - 60px);
+    box-sizing: border-box;
 }
 
 .back-to-top.visible {
