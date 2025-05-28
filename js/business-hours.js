@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Business hours configuration
     const BUSINESS_HOURS = {
-        0: null, // Sunday - Closed
-        1: { open: 10, close: 20 }, // Monday: 10AM - 8PM
-        2: { open: 10, close: 20 }, // Tuesday: 10AM - 8PM
-        3: { open: 10, close: 20 }, // Wednesday: 10AM - 8PM
-        4: { open: 10, close: 20 }, // Thursday: 10AM - 8PM
-        5: { open: 10, close: 20 }, // Friday: 10AM - 8PM
-        6: { open: 12, close: 18 }, // Saturday: 12PM - 6PM
+        0: { open: 12, close: 20 }, // Sunday: 12PM - 8PM
+        1: { open: 12, close: 20 }, // Monday: 12PM - 8PM
+        2: { open: 12, close: 20 }, // Tuesday: 12PM - 8PM
+        3: { open: 12, close: 20 }, // Wednesday: 12PM - 8PM
+        4: { open: 12, close: 20 }, // Thursday: 12PM - 8PM
+        5: { open: 12, close: 20 }, // Friday: 12PM - 8PM
+        6: { open: 12, close: 20 }, // Saturday: 12PM - 8PM
     };
 
     const statusBanner = document.getElementById('business-status-banner');
