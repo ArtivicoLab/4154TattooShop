@@ -1,6 +1,312 @@
 /* 4154 Tattoo Shop - Components & Gallery Styles */
 
 /* ================================
+   SERVICES SECTION
+   ================================ */
+
+.services {
+    background: linear-gradient(135deg, var(--charcoal), var(--dark-gray));
+    position: relative;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150"><defs><pattern id="services-pattern" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M15,5 L25,15 L15,25 L5,15 Z" fill="none" stroke="%23d4af37" stroke-width="0.3" opacity="0.08"/></pattern></defs><rect width="100%" height="100%" fill="url(%23services-pattern)"/></svg>');
+    pointer-events: none;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.service-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: var(--smooth-transition);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--primary-gold), var(--rich-gold), var(--bronze-gold), var(--primary-gold));
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+.service-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: var(--deep-shadow);
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-gold), var(--rich-gold));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    font-size: 2rem;
+    color: var(--deep-black);
+    box-shadow: var(--gold-glow);
+    transition: var(--hover-transition);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.service-card h3 {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    color: var(--primary-gold);
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.service-card p {
+    color: var(--silver);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.service-price {
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    color: var(--rich-gold);
+    font-weight: 600;
+    text-shadow: var(--text-shadow);
+}
+
+/* ================================
+   ARTISTS SECTION
+   ================================ */
+
+.artists {
+    background: linear-gradient(135deg, var(--deep-black), var(--charcoal));
+    position: relative;
+}
+
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.artist-card {
+    background: rgba(26, 26, 26, 0.8);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: var(--smooth-transition);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.artist-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--deep-shadow);
+    border-color: var(--primary-gold);
+}
+
+.artist-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.artist-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--smooth-transition);
+}
+
+.artist-card:hover .artist-image img {
+    transform: scale(1.1);
+}
+
+.artist-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--smooth-transition);
+}
+
+.artist-card:hover .artist-overlay {
+    opacity: 1;
+}
+
+.artist-social {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: var(--primary-gold);
+    color: var(--deep-black);
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: var(--hover-transition);
+    box-shadow: var(--gold-glow);
+}
+
+.social-icon:hover {
+    background: var(--rich-gold);
+    transform: scale(1.1);
+}
+
+.artist-info {
+    padding: 25px;
+    text-align: center;
+}
+
+.artist-info h3 {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    color: var(--primary-gold);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.artist-specialty {
+    color: var(--silver);
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    font-style: italic;
+}
+
+.artist-experience {
+    color: var(--light-gray);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ================================
+   TESTIMONIALS SECTION
+   ================================ */
+
+.testimonials {
+    background: 
+        linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(0, 0, 0, 0.95)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="testimonial-pattern" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="12.5" cy="12.5" r="2" fill="%23d4af37" opacity="0.05"/></pattern></defs><rect width="100%" height="100%" fill="url(%23testimonial-pattern)"/></svg>');
+    position: relative;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.testimonial-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+    padding: 35px 30px;
+    transition: var(--smooth-transition);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 4rem;
+    color: var(--primary-gold);
+    font-family: var(--font-primary);
+    opacity: 0.3;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    background: rgba(0, 0, 0, 0.8);
+    border-color: var(--primary-gold);
+    box-shadow: var(--gold-glow);
+}
+
+.stars {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.stars i {
+    color: var(--primary-gold);
+    font-size: 1.1rem;
+}
+
+.testimonial-content p {
+    color: var(--silver);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-style: italic;
+    font-family: var(--font-secondary);
+}
+
+.testimonial-author strong {
+    font-family: var(--font-primary);
+    color: var(--primary-gold);
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.testimonial-author span {
+    color: var(--light-gray);
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+/* ================================
    GALLERY SECTION
    ================================ */
 

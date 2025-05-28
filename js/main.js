@@ -13,6 +13,121 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ================================
+    // HERO CAROUSEL FUNCTIONALITY
+    // ================================
+
+    const carousel = document.querySelector('.hero-carousel');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    let currentSlide = 0;
+    let carouselInterval;
+
+    function showSlide(index) {
+        // Remove active class from all slides and indicators
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        
+        // Add active class to current slide and indicator
+        if (slides[index]) {
+            slides[index].classList.add('active');
+        }
+        if (indicators[index]) {
+            indicators[index].classList.add('active');
+        }
+        
+        currentSlide = index;
+    }
+
+    function nextSlide() {
+        const next = (currentSlide + 1) % slides.length;
+        showSlide(next);
+    }
+
+    function prevSlide() {
+        const prev = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prev);
+    }
+
+    function startCarousel() {
+        carouselInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    }
+
+    function stopCarousel() {
+        if (carouselInterval) {
+            clearInterval(carouselInterval);
+        }
+    }
+
+    // Initialize carousel if elements exist
+    if (carousel && slides.length > 0) {
+        // Set up event listeners for navigation buttons
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                stopCarousel();
+                startCarousel(); // Restart auto-play
+            });
+        }
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                stopCarousel();
+                startCarousel(); // Restart auto-play
+            });
+        }
+
+        // Set up event listeners for indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                showSlide(index);
+                stopCarousel();
+                startCarousel(); // Restart auto-play
+            });
+        });
+
+        // Pause carousel on hover
+        carousel.addEventListener('mouseenter', stopCarousel);
+        carousel.addEventListener('mouseleave', startCarousel);
+
+        // Start auto-play
+        startCarousel();
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        carousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const swipeDistance = touchEndX - touchStartX;
+            
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                if (swipeDistance > 0) {
+                    prevSlide();
+                } else {
+                    nextSlide();
+                }
+                stopCarousel();
+                startCarousel();
+            }
+        }
+
+        console.log('✨ Hero Carousel initialized with', slides.length, 'slides');
+    }
+
+    // ================================
     // NAVIGATION FUNCTIONALITY
     // ================================
 

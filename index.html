@@ -51,7 +51,9 @@
                 
                 <ul class="nav-menu">
                     <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#artists" class="nav-link">Artists</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
@@ -65,9 +67,42 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Carousel -->
     <section id="home" class="hero">
-        <div class="hero-overlay"></div>
+        <!-- Carousel Background -->
+        <div class="hero-carousel">
+            <div class="carousel-slide active" style="background-image: url('images/tattoos/IMG_8684.jpeg');">
+                <div class="carousel-overlay"></div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('images/tattoos/IMG_8685.jpeg');">
+                <div class="carousel-overlay"></div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('images/tattoos/IMG_8686.jpeg');">
+                <div class="carousel-overlay"></div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('images/tattoos/IMG_8687.jpeg');">
+                <div class="carousel-overlay"></div>
+            </div>
+        </div>
+        
+        <!-- Carousel Controls -->
+        <div class="carousel-controls">
+            <button class="carousel-btn prev-btn" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next-btn" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+            <button class="indicator active" data-slide="0"></button>
+            <button class="indicator" data-slide="1"></button>
+            <button class="indicator" data-slide="2"></button>
+            <button class="indicator" data-slide="3"></button>
+        </div>
+        
         <div class="hero-content">
             <div class="ornate-frame">
                 <div class="frame-corner top-left"></div>
@@ -181,6 +216,117 @@
         </div>
     </section>
 
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Premium Services</h2>
+                <p class="section-subtitle">Exceptional tattoo artistry tailored to your vision</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Custom Designs</h3>
+                    <p>Personalized artwork created exclusively for you by our master artists</p>
+                    <div class="service-price">Starting at $200</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Portrait Work</h3>
+                    <p>Hyperrealistic portraits with incredible attention to detail</p>
+                    <div class="service-price">Starting at $350</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Luxury Sleeves</h3>
+                    <p>Full arm masterpieces that tell your unique story</p>
+                    <div class="service-price">Starting at $800</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Cover-Ups</h3>
+                    <p>Transform old tattoos into stunning new artworks</p>
+                    <div class="service-price">Starting at $250</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artist Spotlight Section -->
+    <section id="artists" class="artists">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Master Artists</h2>
+                <p class="section-subtitle">Meet our talented team of luxury tattoo specialists</p>
+            </div>
+            
+            <div class="artists-grid">
+                <div class="artist-card">
+                    <div class="artist-image">
+                        <img src="images/tattoos/IMG_8688.jpeg" alt="Master Artist" loading="lazy">
+                        <div class="artist-overlay">
+                            <div class="artist-social">
+                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="artist-info">
+                        <h3>Marcus Sterling</h3>
+                        <p class="artist-specialty">Realism & Portraits</p>
+                        <p class="artist-experience">8+ Years Experience</p>
+                    </div>
+                </div>
+                
+                <div class="artist-card">
+                    <div class="artist-image">
+                        <img src="images/tattoos/IMG_8689.jpeg" alt="Master Artist" loading="lazy">
+                        <div class="artist-overlay">
+                            <div class="artist-social">
+                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="artist-info">
+                        <h3>Aria Gold</h3>
+                        <p class="artist-specialty">Fine Line & Ornamental</p>
+                        <p class="artist-experience">6+ Years Experience</p>
+                    </div>
+                </div>
+                
+                <div class="artist-card">
+                    <div class="artist-image">
+                        <img src="images/tattoos/IMG_8690.jpeg" alt="Master Artist" loading="lazy">
+                        <div class="artist-overlay">
+                            <div class="artist-social">
+                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="artist-info">
+                        <h3>Viktor Black</h3>
+                        <p class="artist-specialty">Traditional & Neo-Traditional</p>
+                        <p class="artist-experience">10+ Years Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
@@ -211,6 +357,69 @@
                 <div class="about-image">
                     <div class="luxury-frame">
                         <img src="images/tattoos/IMG_8690.jpeg" alt="4154 Tattoo Shop Artistry" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Client Stories</h2>
+                <p class="section-subtitle">What our clients say about their luxury tattoo experience</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The most incredible tattoo experience I've ever had. The artistry and attention to detail is absolutely unmatched. Marcus created a masterpiece that exceeded all my expectations."</p>
+                        <div class="testimonial-author">
+                            <strong>Sarah Chen</strong>
+                            <span>Portrait Tattoo</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"4154 Tattoo Shop truly lives up to its luxury reputation. The studio is immaculate, the artists are phenomenal, and my sleeve is a work of art that I'm proud to wear."</p>
+                        <div class="testimonial-author">
+                            <strong>Michael Rodriguez</strong>
+                            <span>Full Sleeve</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Aria's fine line work is absolutely stunning. The precision and elegance in every detail is remarkable. I couldn't be happier with my ornamental piece."</p>
+                        <div class="testimonial-author">
+                            <strong>Emma Thompson</strong>
+                            <span>Fine Line Design</span>
+                        </div>
                     </div>
                 </div>
             </div>
