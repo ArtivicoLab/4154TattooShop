@@ -410,6 +410,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ================================
+    // TOUCH INTERACTIONS FOR ALL ELEMENTS
+    // ================================
+
+    // Apply touch effects to all existing interactive elements
+    function initializeTouchEffects() {
+        // Gallery items
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach(item => addTouchEffects(item));
+
+        // Service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => addTouchEffects(card));
+
+        // Testimonial cards
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        testimonialCards.forEach(card => addTouchEffects(card));
+
+        // Filter buttons
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(btn => addTouchEffects(btn));
+
+        console.log('✨ Touch effects initialized for all interactive elements');
+    }
+
+    // Initialize touch effects after DOM is ready
+    initializeTouchEffects();
+
+    // ================================
     // ANIMATIONS & EFFECTS
     // ================================
 
@@ -622,7 +650,35 @@ document.addEventListener('DOMContentLoaded', function() {
             openImageModal(imageData.src, imageData.title);
         });
         
+        // Add touch event handlers for mobile
+        addTouchEffects(item);
+        
         galleryGrid.appendChild(item);
+    }
+
+    // Add touch effects to elements
+    function addTouchEffects(element) {
+        let touchStartTime = 0;
+        
+        element.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            touchStartTime = Date.now();
+            this.classList.add('touch-active');
+        }, { passive: false });
+        
+        element.addEventListener('touchend', function(e) {
+            const touchDuration = Date.now() - touchStartTime;
+            const self = this;
+            
+            // Keep the effect for a moment, then remove
+            setTimeout(() => {
+                self.classList.remove('touch-active');
+            }, 150);
+        });
+        
+        element.addEventListener('touchcancel', function() {
+            this.classList.remove('touch-active');
+        });
     }
 
     function openImageModal(src, title) {

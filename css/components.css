@@ -295,6 +295,70 @@
     opacity: 1;
 }
 
+/* Touch-active class for JavaScript touch events */
+.interactive-item.touch-active {
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 
+        var(--deep-shadow),
+        0 0 30px rgba(212, 175, 55, 0.3) !important;
+}
+
+.interactive-item.touch-active img {
+    transform: scale(1.1) !important;
+    filter: brightness(1.1) !important;
+}
+
+.interactive-item.touch-active .interactive-overlay {
+    opacity: 1 !important;
+}
+
+.gallery-item.touch-active {
+    transform: translateY(-10px) scale(1.02) !important;
+    box-shadow: 
+        var(--deep-shadow),
+        0 20px 40px rgba(212, 175, 55, 0.2) !important;
+}
+
+.gallery-item.touch-active img {
+    transform: scale(1.1) !important;
+    filter: brightness(1.1) contrast(1.1) !important;
+}
+
+.gallery-item.touch-active .gallery-overlay {
+    transform: translateY(0) !important;
+}
+
+.service-card.touch-active {
+    transform: translateY(-10px) scale(1.02) !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    box-shadow: var(--deep-shadow) !important;
+}
+
+.service-card.touch-active::before {
+    opacity: 1 !important;
+}
+
+.service-card.touch-active h3 {
+    color: var(--deep-black) !important;
+    text-shadow: none !important;
+}
+
+.service-card.touch-active p {
+    color: var(--deep-black) !important;
+}
+
+.service-card.touch-active .service-price {
+    color: var(--deep-black) !important;
+    text-shadow: none !important;
+}
+
+.testimonial-card.touch-active {
+    transform: translateY(-5px) !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    border-color: var(--primary-gold) !important;
+    box-shadow: var(--gold-glow) !important;
+}
+
 /* Touch-specific enhancements */
 @media (hover: none) and (pointer: coarse) {
     .interactive-item {
