@@ -116,16 +116,24 @@ body {
 .status-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    gap: 15px;
+    flex-wrap: nowrap;
 }
 
 .status-info {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.status-indicator {
+    flex-shrink: 0;
 }
 
 .status-text {
@@ -752,14 +760,29 @@ section {
     }
     
     .status-content {
-        flex-direction: column;
+        padding: 0 10px;
         gap: 10px;
-        text-align: center;
+    }
+    
+    .status-text {
+        font-size: 0.9rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .current-time {
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+    
+    .demo-banner {
+        padding: 6px 0;
     }
     
     .demo-content {
-        flex-direction: column;
-        gap: 5px;
+        font-size: 0.8rem;
+        gap: 6px;
     }
 }
 
@@ -871,7 +894,39 @@ section {
     }
     
     .demo-content {
+        font-size: 0.7rem;
+        gap: 4px;
+    }
+    
+    .demo-content i {
         font-size: 0.8rem;
+    }
+    
+    .status-content {
+        padding: 0 5px;
+        gap: 8px;
+    }
+    
+    .status-text {
+        font-size: 0.8rem;
+        max-width: 200px;
+    }
+    
+    .current-time {
+        font-size: 0.7rem;
+    }
+    
+    .status-dot {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .business-status-banner {
+        padding: 8px 0;
+    }
+    
+    .demo-banner {
+        padding: 5px 0;
     }
     
     .nav-menu {
