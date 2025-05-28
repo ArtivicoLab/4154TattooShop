@@ -659,26 +659,54 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add touch effects to elements
     function addTouchEffects(element) {
         let touchStartTime = 0;
+        let touchStartY = 0;
+        let touchStartX = 0;
+        let hasMoved = false;
         
         element.addEventListener('touchstart', function(e) {
-            e.preventDefault();
             touchStartTime = Date.now();
-            this.classList.add('touch-active');
-        }, { passive: false });
+            touchStartY = e.touches[0].clientY;
+            touchStartX = e.touches[0].clientX;
+            hasMoved = false;
+            
+            // Add effect with slight delay to avoid interfering with scroll
+            setTimeout(() => {
+                if (!hasMoved) {
+                    this.classList.add('touch-active');
+                }
+            }, 50);
+        }, { passive: true });
+        
+        element.addEventListener('touchmove', function(e) {
+            const currentY = e.touches[0].clientY;
+            const currentX = e.touches[0].clientX;
+            const moveThreshold = 10;
+            
+            // Check if user is scrolling/swiping
+            if (Math.abs(currentY - touchStartY) > moveThreshold || 
+                Math.abs(currentX - touchStartX) > moveThreshold) {
+                hasMoved = true;
+                this.classList.remove('touch-active');
+            }
+        }, { passive: true });
         
         element.addEventListener('touchend', function(e) {
             const touchDuration = Date.now() - touchStartTime;
             const self = this;
             
-            // Keep the effect for a moment, then remove
-            setTimeout(() => {
+            // Only keep effect if it was a tap, not a scroll
+            if (!hasMoved && touchDuration < 500) {
+                setTimeout(() => {
+                    self.classList.remove('touch-active');
+                }, 100);
+            } else {
                 self.classList.remove('touch-active');
-            }, 150);
-        });
+            }
+        }, { passive: true });
         
         element.addEventListener('touchcancel', function() {
             this.classList.remove('touch-active');
-        });
+        }, { passive: true });
     }
 
     function openImageModal(src, title) {
