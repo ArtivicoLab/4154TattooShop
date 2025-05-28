@@ -504,5 +504,144 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ================================
+    // INTERACTIVE GALLERY FUNCTIONALITY
+    // ================================
+
+    // Gallery data with existing images
+    const galleryImages = [
+        { src: 'images/tattoos/IMG_8684.jpeg', category: 'portraits', title: 'Realistic Portrait' },
+        { src: 'images/tattoos/IMG_8685.jpeg', category: 'traditional', title: 'Traditional Design' },
+        { src: 'images/tattoos/IMG_8686.jpeg', category: 'color', title: 'Vibrant Color Work' },
+        { src: 'images/tattoos/IMG_8687.jpeg', category: 'geometric', title: 'Geometric Pattern' },
+        { src: 'images/tattoos/IMG_8688.jpeg', category: 'portraits', title: 'Fine Line Portrait' },
+        { src: 'images/tattoos/IMG_8689.jpeg', category: 'traditional', title: 'Classic Traditional' },
+        { src: 'images/tattoos/IMG_8690.jpeg', category: 'color', title: 'Bold Color Piece' },
+        { src: 'images/tattoos/IMG_8691.jpeg', category: 'geometric', title: 'Sacred Geometry' },
+        // Duplicate images with different categories for demonstration
+        { src: 'images/tattoos/IMG_8684.jpeg', category: 'color', title: 'Portrait with Color' },
+        { src: 'images/tattoos/IMG_8685.jpeg', category: 'geometric', title: 'Traditional Geometry' },
+        { src: 'images/tattoos/IMG_8686.jpeg', category: 'portraits', title: 'Artistic Portrait' },
+        { src: 'images/tattoos/IMG_8687.jpeg', category: 'traditional', title: 'Modern Traditional' },
+        { src: 'images/tattoos/IMG_8688.jpeg', category: 'color', title: 'Colorful Fine Art' },
+        { src: 'images/tattoos/IMG_8689.jpeg', category: 'geometric', title: 'Geometric Traditional' },
+        { src: 'images/tattoos/IMG_8690.jpeg', category: 'portraits', title: 'Bold Portrait' },
+        { src: 'images/tattoos/IMG_8691.jpeg', category: 'color', title: 'Geometric Color' },
+        { src: 'images/tattoos/IMG_8684.jpeg', category: 'traditional', title: 'Traditional Portrait' },
+        { src: 'images/tattoos/IMG_8685.jpeg', category: 'portraits', title: 'Classic Portrait' },
+        { src: 'images/tattoos/IMG_8686.jpeg', category: 'geometric', title: 'Abstract Geometry' },
+        { src: 'images/tattoos/IMG_8687.jpeg', category: 'color', title: 'Dynamic Color Work' },
+        { src: 'images/tattoos/IMG_8688.jpeg', category: 'traditional', title: 'Fine Traditional' },
+        { src: 'images/tattoos/IMG_8689.jpeg', category: 'portraits', title: 'Detailed Portrait' },
+        { src: 'images/tattoos/IMG_8690.jpeg', category: 'geometric', title: 'Complex Geometry' },
+        { src: 'images/tattoos/IMG_8691.jpeg', category: 'traditional', title: 'Sacred Traditional' }
+    ];
+
+    let currentFilter = 'all';
+    let imagesPerLoad = 8;
+    let currentlyLoaded = 0;
+
+    const galleryGrid = document.getElementById('interactive-gallery-grid');
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    if (galleryGrid && loadMoreBtn) {
+        // Initialize gallery
+        initializeInteractiveGallery();
+
+        // Filter functionality
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active filter button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Set current filter
+                currentFilter = this.dataset.filter;
+                currentlyLoaded = 0;
+                
+                // Clear gallery and reload
+                galleryGrid.innerHTML = '';
+                loadImages();
+            });
+        });
+
+        // Load more functionality
+        loadMoreBtn.addEventListener('click', loadImages);
+    }
+
+    function initializeInteractiveGallery() {
+        loadImages();
+        console.log('✨ Interactive Gallery initialized with', galleryImages.length, 'images');
+    }
+
+    function getFilteredImages() {
+        if (currentFilter === 'all') {
+            return galleryImages;
+        }
+        return galleryImages.filter(img => img.category === currentFilter);
+    }
+
+    function loadImages() {
+        const filteredImages = getFilteredImages();
+        const imagesToLoad = filteredImages.slice(currentlyLoaded, currentlyLoaded + imagesPerLoad);
+        
+        imagesToLoad.forEach((image, index) => {
+            setTimeout(() => {
+                createGalleryItem(image);
+            }, index * 100); // Stagger the loading for animation effect
+        });
+        
+        currentlyLoaded += imagesToLoad.length;
+        
+        // Update load more button
+        if (currentlyLoaded >= filteredImages.length) {
+            loadMoreBtn.style.display = 'none';
+        } else {
+            loadMoreBtn.style.display = 'inline-flex';
+        }
+    }
+
+    function createGalleryItem(imageData) {
+        const item = document.createElement('div');
+        item.className = 'interactive-item';
+        item.innerHTML = `
+            <img src="${imageData.src}" alt="${imageData.title}" loading="lazy">
+            <div class="interactive-overlay">
+                <div class="overlay-content">
+                    <div class="overlay-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="overlay-text">${imageData.title}</div>
+                </div>
+            </div>
+        `;
+        
+        // Add click event to open modal
+        item.addEventListener('click', function() {
+            openImageModal(imageData.src, imageData.title);
+        });
+        
+        galleryGrid.appendChild(item);
+    }
+
+    function openImageModal(src, title) {
+        const modal = document.getElementById('image-modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        
+        if (modal && modalImage) {
+            modalImage.src = src;
+            modalImage.alt = title;
+            
+            if (modalTitle) modalTitle.textContent = title;
+            if (modalDescription) modalDescription.textContent = 'Luxury tattoo artistry showcasing exceptional skill and creativity.';
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
     console.log('✨ 4154 Tattoo Shop - Luxury experience initialized');
 });

@@ -178,60 +178,98 @@
 }
 
 /* ================================
-   ARTISTS SECTION
+   INTERACTIVE GALLERY SECTION
    ================================ */
 
-.artists {
+.interactive-gallery {
     background: linear-gradient(135deg, var(--deep-black), var(--charcoal));
     position: relative;
 }
 
-.artists-grid {
+.gallery-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 2px solid var(--primary-gold);
+    color: var(--primary-gold);
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--hover-transition);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--primary-gold);
+    color: var(--deep-black);
+    transform: translateY(-2px);
+    box-shadow: var(--gold-glow);
+}
+
+.interactive-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin-top: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 40px 0;
 }
 
-.artist-card {
-    background: rgba(26, 26, 26, 0.8);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: var(--smooth-transition);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    backdrop-filter: blur(10px);
-}
-
-.artist-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--deep-shadow);
-    border-color: var(--primary-gold);
-}
-
-.artist-image {
+.interactive-item {
     position: relative;
-    height: 300px;
+    aspect-ratio: 1;
+    border-radius: 15px;
     overflow: hidden;
+    cursor: pointer;
+    transition: var(--smooth-transition);
+    background: var(--charcoal);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
 }
 
-.artist-image img {
+.interactive-item:nth-child(odd) {
+    animation-delay: 0.1s;
+}
+
+.interactive-item:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+.interactive-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        var(--deep-shadow),
+        0 0 30px rgba(212, 175, 55, 0.3);
+}
+
+.interactive-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: var(--smooth-transition);
 }
 
-.artist-card:hover .artist-image img {
+.interactive-item:hover img {
     transform: scale(1.1);
+    filter: brightness(1.1);
 }
 
-.artist-overlay {
+.interactive-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.8), rgba(212, 175, 55, 0.2));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -239,59 +277,81 @@
     transition: var(--smooth-transition);
 }
 
-.artist-card:hover .artist-overlay {
+.interactive-item:hover .interactive-overlay {
     opacity: 1;
 }
 
-.artist-social {
-    display: flex;
-    gap: 15px;
+.overlay-content {
+    text-align: center;
+    color: var(--cream);
 }
 
-.social-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    background: var(--primary-gold);
+.overlay-icon {
+    font-size: 2.5rem;
+    color: var(--primary-gold);
+    margin-bottom: 10px;
+    animation: pulse 2s infinite;
+}
+
+.overlay-text {
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: var(--text-shadow);
+}
+
+.gallery-controls {
+    text-align: center;
+    margin: 50px 0 20px;
+}
+
+.load-more-btn {
+    background: linear-gradient(135deg, var(--primary-gold), var(--rich-gold));
     color: var(--deep-black);
-    border-radius: 50%;
-    text-decoration: none;
-    font-size: 1.2rem;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
     transition: var(--hover-transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     box-shadow: var(--gold-glow);
 }
 
-.social-icon:hover {
-    background: var(--rich-gold);
-    transform: scale(1.1);
+.load-more-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        var(--gold-glow),
+        0 15px 30px rgba(212, 175, 55, 0.4);
 }
 
-.artist-info {
-    padding: 25px;
-    text-align: center;
+.load-more-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
 }
 
-.artist-info h3 {
-    font-family: var(--font-primary);
-    font-size: 1.5rem;
-    color: var(--primary-gold);
-    margin-bottom: 8px;
-    font-weight: 600;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.artist-specialty {
-    color: var(--silver);
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-    font-style: italic;
-}
-
-.artist-experience {
-    color: var(--light-gray);
-    font-size: 0.9rem;
-    font-weight: 500;
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 /* ================================

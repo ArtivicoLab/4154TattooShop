@@ -264,65 +264,31 @@
         </div>
     </section>
 
-    <!-- Artist Spotlight Section -->
-    <section id="artists" class="artists">
+    <!-- Interactive Gallery Section -->
+    <section id="artists" class="interactive-gallery">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Master Artists</h2>
-                <p class="section-subtitle">Meet our talented team of luxury tattoo specialists</p>
+                <h2 class="section-title">Portfolio Showcase</h2>
+                <p class="section-subtitle">Explore our extensive collection of luxury tattoo artistry</p>
             </div>
             
-            <div class="artists-grid">
-                <div class="artist-card">
-                    <div class="artist-image">
-                        <img src="images/tattoos/IMG_8688.jpeg" alt="Master Artist" loading="lazy">
-                        <div class="artist-overlay">
-                            <div class="artist-social">
-                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="artist-info">
-                        <h3>Marcus Sterling</h3>
-                        <p class="artist-specialty">Realism & Portraits</p>
-                        <p class="artist-experience">8+ Years Experience</p>
-                    </div>
-                </div>
-                
-                <div class="artist-card">
-                    <div class="artist-image">
-                        <img src="images/tattoos/IMG_8689.jpeg" alt="Master Artist" loading="lazy">
-                        <div class="artist-overlay">
-                            <div class="artist-social">
-                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="artist-info">
-                        <h3>Aria Gold</h3>
-                        <p class="artist-specialty">Fine Line & Ornamental</p>
-                        <p class="artist-experience">6+ Years Experience</p>
-                    </div>
-                </div>
-                
-                <div class="artist-card">
-                    <div class="artist-image">
-                        <img src="images/tattoos/IMG_8690.jpeg" alt="Master Artist" loading="lazy">
-                        <div class="artist-overlay">
-                            <div class="artist-social">
-                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="artist-info">
-                        <h3>Viktor Black</h3>
-                        <p class="artist-specialty">Traditional & Neo-Traditional</p>
-                        <p class="artist-experience">10+ Years Experience</p>
-                    </div>
-                </div>
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All Work</button>
+                <button class="filter-btn" data-filter="portraits">Portraits</button>
+                <button class="filter-btn" data-filter="traditional">Traditional</button>
+                <button class="filter-btn" data-filter="geometric">Geometric</button>
+                <button class="filter-btn" data-filter="color">Color Work</button>
+            </div>
+            
+            <div class="interactive-grid" id="interactive-gallery-grid">
+                <!-- Images will be dynamically loaded here -->
+            </div>
+            
+            <div class="gallery-controls">
+                <button class="load-more-btn" id="load-more-btn">
+                    <span>Load More Artwork</span>
+                    <i class="fas fa-plus"></i>
+                </button>
             </div>
         </div>
     </section>
