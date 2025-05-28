@@ -851,11 +851,23 @@ section {
     }
     
     .back-to-top {
-        width: 90px;
-        height: 45px;
-        bottom: 15px;
-        right: 10px;
-        font-size: 0.7rem;
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 15px;
+        font-size: 0.65rem;
+        border-radius: 50%;
+        padding: 5px;
+    }
+    
+    .back-to-top-icon {
+        font-size: 0.8rem;
+        margin-bottom: 1px;
+    }
+    
+    .back-to-top-status {
+        font-size: 0.55rem;
+        letter-spacing: 0.2px;
     }
     
     .demo-content {

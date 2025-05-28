@@ -1205,4 +1205,22 @@
         height: 45px;
         font-size: 1.1rem;
     }
+    
+    .back-to-top {
+        width: 70px;
+        height: 50px;
+        bottom: 20px;
+        right: 15px;
+        font-size: 0.75rem;
+        border-radius: 25px;
+    }
+    
+    .back-to-top-icon {
+        font-size: 0.9rem;
+        margin-bottom: 1px;
+    }
+    
+    .back-to-top-status {
+        font-size: 0.6rem;
+    }
 }
