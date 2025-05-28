@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://4154tattoo.com/sitemap.xml
+
+# Block access to private files
+Disallow: /css/
+Disallow: /js/
+Disallow: /.replit
+Disallow: /README.md
+Disallow: /STATIC_SITE_FEATURES.md
+Disallow: /CARD_GALLERY_GUIDE.md
+
+# Allow access to important pages
+Allow: /
+Allow: /index.html
+Allow: /404.html
