@@ -540,33 +540,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // INTERACTIVE GALLERY FUNCTIONALITY
     // ================================
 
-    // Gallery data with existing images
+    // Gallery data with authentic tattoo images from 4154 Tattoo Shop
     const galleryImages = [
-        { src: 'images/tattoos/IMG_8684.jpeg', category: 'portraits', title: 'Realistic Portrait' },
-        { src: 'images/tattoos/IMG_8685.jpeg', category: 'traditional', title: 'Traditional Design' },
-        { src: 'images/tattoos/IMG_8686.jpeg', category: 'color', title: 'Vibrant Color Work' },
-        { src: 'images/tattoos/IMG_8687.jpeg', category: 'geometric', title: 'Geometric Pattern' },
-        { src: 'images/tattoos/IMG_8688.jpeg', category: 'portraits', title: 'Fine Line Portrait' },
-        { src: 'images/tattoos/IMG_8689.jpeg', category: 'traditional', title: 'Classic Traditional' },
-        { src: 'images/tattoos/IMG_8690.jpeg', category: 'color', title: 'Bold Color Piece' },
-        { src: 'images/tattoos/IMG_8691.jpeg', category: 'geometric', title: 'Sacred Geometry' },
-        // Duplicate images with different categories for demonstration
-        { src: 'images/tattoos/IMG_8684.jpeg', category: 'color', title: 'Portrait with Color' },
-        { src: 'images/tattoos/IMG_8685.jpeg', category: 'geometric', title: 'Traditional Geometry' },
-        { src: 'images/tattoos/IMG_8686.jpeg', category: 'portraits', title: 'Artistic Portrait' },
-        { src: 'images/tattoos/IMG_8687.jpeg', category: 'traditional', title: 'Modern Traditional' },
-        { src: 'images/tattoos/IMG_8688.jpeg', category: 'color', title: 'Colorful Fine Art' },
-        { src: 'images/tattoos/IMG_8689.jpeg', category: 'geometric', title: 'Geometric Traditional' },
-        { src: 'images/tattoos/IMG_8690.jpeg', category: 'portraits', title: 'Bold Portrait' },
-        { src: 'images/tattoos/IMG_8691.jpeg', category: 'color', title: 'Geometric Color' },
-        { src: 'images/tattoos/IMG_8684.jpeg', category: 'traditional', title: 'Traditional Portrait' },
-        { src: 'images/tattoos/IMG_8685.jpeg', category: 'portraits', title: 'Classic Portrait' },
-        { src: 'images/tattoos/IMG_8686.jpeg', category: 'geometric', title: 'Abstract Geometry' },
-        { src: 'images/tattoos/IMG_8687.jpeg', category: 'color', title: 'Dynamic Color Work' },
-        { src: 'images/tattoos/IMG_8688.jpeg', category: 'traditional', title: 'Fine Traditional' },
-        { src: 'images/tattoos/IMG_8689.jpeg', category: 'portraits', title: 'Detailed Portrait' },
-        { src: 'images/tattoos/IMG_8690.jpeg', category: 'geometric', title: 'Complex Geometry' },
-        { src: 'images/tattoos/IMG_8691.jpeg', category: 'traditional', title: 'Sacred Traditional' }
+        { src: 'images/tattoos/color-floral-design.jpeg', category: 'color', title: 'Color Floral Design' },
+        { src: 'images/tattoos/detailed-portrait-work.jpeg', category: 'portraits', title: 'Detailed Portrait Work' },
+        { src: 'images/tattoos/black-gray-artistry.jpeg', category: 'traditional', title: 'Black & Gray Artistry' },
+        { src: 'images/tattoos/fine-line-geometric.jpeg', category: 'geometric', title: 'Fine Line Geometric' },
+        { src: 'images/tattoos/memorial-tribute.jpeg', category: 'traditional', title: 'Memorial Tribute' },
+        { src: 'images/tattoos/custom-design-work.jpeg', category: 'geometric', title: 'Custom Design Work' },
+        { src: 'images/tattoos/realistic-portrait.jpeg', category: 'portraits', title: 'Realistic Portrait' },
+        { src: 'images/tattoos/vibrant-color-masterpiece.jpeg', category: 'color', title: 'Vibrant Color Masterpiece' },
+        { src: 'images/tattoos/traditional-style.jpeg', category: 'traditional', title: 'Traditional Style' }
     ];
 
     let currentFilter = 'all';
