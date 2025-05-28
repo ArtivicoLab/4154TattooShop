@@ -169,16 +169,40 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Update back to top button color based on status
+    // Update back to top button with business status
     function updateBackToTopButton(status) {
         const backToTopBtn = document.getElementById('back-to-top');
-        if (backToTopBtn) {
+        const backToTopStatus = document.getElementById('back-to-top-status');
+        
+        if (backToTopBtn && backToTopStatus) {
+            // Remove all status classes
+            backToTopBtn.classList.remove('open', 'closed', 'opening-soon');
+            
             if (status.isOpen) {
-                backToTopBtn.style.background = 'linear-gradient(135deg, #00cc00, #00ff00)';
-                backToTopBtn.style.boxShadow = '0 0 20px rgba(0, 255, 0, 0.3)';
+                backToTopBtn.classList.add('open');
+                backToTopStatus.textContent = 'OPEN';
             } else {
-                backToTopBtn.style.background = 'linear-gradient(135deg, var(--primary-gold), var(--rich-gold))';
-                backToTopBtn.style.boxShadow = 'var(--gold-glow)';
+                // Check if opening soon (within 2 hours)
+                const now = new Date();
+                const currentDay = now.getDay();
+                const currentTime = now.getHours() + (now.getMinutes() / 60);
+                const todayHours = BUSINESS_HOURS[currentDay];
+                
+                let isOpeningSoon = false;
+                if (todayHours && currentTime < todayHours.open) {
+                    const timeUntilOpen = todayHours.open - currentTime;
+                    if (timeUntilOpen <= 2) { // Opening within 2 hours
+                        isOpeningSoon = true;
+                    }
+                }
+                
+                if (isOpeningSoon) {
+                    backToTopBtn.classList.add('opening-soon');
+                    backToTopStatus.textContent = 'SOON';
+                } else {
+                    backToTopBtn.classList.add('closed');
+                    backToTopStatus.textContent = 'CLOSED';
+                }
             }
         }
     }
