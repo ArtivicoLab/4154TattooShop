@@ -437,6 +437,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize touch effects after DOM is ready
     initializeTouchEffects();
 
+    // Add touch effects to share buttons when they're added
+    const shareButtons = document.querySelectorAll('.share-btn');
+    shareButtons.forEach(btn => addTouchEffects(btn));
+
     // ================================
     // ANIMATIONS & EFFECTS
     // ================================
@@ -729,3 +733,105 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('✨ 4154 Tattoo Shop - Luxury experience initialized');
 });
+
+// ================================
+// WEBSITE SHARING FUNCTIONS
+// ================================
+
+function shareToFacebook() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent('Check out 4154 Tattoo Shop - Luxury tattoo artistry at its finest!');
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`, '_blank', 'width=600,height=400');
+}
+
+function shareToTwitter() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent('Check out 4154 Tattoo Shop - Luxury tattoo artistry at its finest! 🎨✨');
+    const hashtags = encodeURIComponent('TattooArt,LuxuryTattoo,4154TattooShop');
+    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}&hashtags=${hashtags}`, '_blank', 'width=600,height=400');
+}
+
+function shareToInstagram() {
+    // Instagram doesn't support direct URL sharing via web, so we copy the link and show instructions
+    copyWebsiteLink();
+    alert('Link copied! Open Instagram and paste it in your story or bio. You can also take a screenshot of this website to share!');
+}
+
+function shareToWhatsApp() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent('Check out 4154 Tattoo Shop - Luxury tattoo artistry at its finest! ');
+    window.open(`https://wa.me/?text=${text}${url}`, '_blank');
+}
+
+function copyWebsiteLink(button) {
+    const url = window.location.href;
+    
+    if (navigator.clipboard && window.isSecureContext) {
+        // Use modern clipboard API
+        navigator.clipboard.writeText(url).then(() => {
+            showCopySuccess(button);
+        }).catch(() => {
+            fallbackCopyText(url, button);
+        });
+    } else {
+        // Fallback for older browsers
+        fallbackCopyText(url, button);
+    }
+}
+
+function fallbackCopyText(text, button) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showCopySuccess(button);
+    } catch (err) {
+        console.error('Failed to copy text: ', err);
+        alert('Please copy this link manually: ' + text);
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+function showCopySuccess(button) {
+    if (button) {
+        button.classList.add('copied');
+        const originalIcon = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check"></i>';
+        
+        setTimeout(() => {
+            button.classList.remove('copied');
+            button.innerHTML = originalIcon;
+        }, 2000);
+    }
+    
+    // Show a brief success message
+    const message = document.createElement('div');
+    message.textContent = 'Link copied to clipboard!';
+    message.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #d4af37, #b8860b);
+        color: #000;
+        padding: 15px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+    `;
+    
+    document.body.appendChild(message);
+    
+    setTimeout(() => {
+        message.remove();
+    }, 3000);
+}
